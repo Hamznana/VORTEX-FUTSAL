@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background-color: #050505;
+    color: #F5F5F2;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #050505;
+    color: #F5F5F2;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #B6FF00;
+    outline-offset: 3px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1F2220;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B6FF00;
+}
+
+/* Film Grain Texture */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Stadium Spotlight Utility */
+.stadium-light {
+  background: radial-gradient(circle at 50% 0%, rgba(182, 255, 0, 0.08) 0%, rgba(5, 5, 5, 0) 70%);
+}
+
+.stadium-beam-orange {
+  background: radial-gradient(circle at 80% 20%, rgba(255, 90, 31, 0.06) 0%, rgba(5, 5, 5, 0) 65%);
+}
+
+/* Text Stroke & Display Styles */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(245, 245, 242, 0.25);
+  color: transparent;
+}
+
+.text-stroke-electric {
+  -webkit-text-stroke: 1px #B6FF00;
+  color: transparent;
+}
+
+/* Court line glow animation */
+@keyframes courtPulse {
+  0%, 100% {
+    stroke-opacity: 0.4;
+  }
+  50% {
+    stroke-opacity: 0.9;
+    filter: drop-shadow(0 0 6px #B6FF00);
+  }
+}
+
+.animate-court-line {
+  animation: courtPulse 3s ease-in-out infinite;
+}
